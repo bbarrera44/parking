@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  plate: MyString
+  color: MyString
+  brand: MyString
+  parking_id: 1
+
+two:
+  plate: MyString
+  color: MyString
+  brand: MyString
+  parking_id: 1
