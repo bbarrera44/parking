@@ -9,7 +9,10 @@ Rails.application.routes.draw do
   end
   resources :entries, only: %i[index create update show destroy] do
     collection do
-      patch "exit_vehicle/:vehicle_id", action: :exit_vehicle
+      patch "exit_vehicle/:vehicle", action: :exit_vehicle
+      get "show_ticket/:id", action: :show_ticket
+      get "vehicles_out_side", action: :vehicles_out_side
+      get "vehicles_inside", action: :vehicles_inside
     end
   end
   resources :parkings, only: %i[index create update show destroy] do

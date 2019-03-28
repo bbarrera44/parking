@@ -5,9 +5,15 @@ class Entry < ApplicationRecord
   belongs_to :vehicle
   belongs_to :parking
 
+
+
   def verify_entries
-    Entry.where('exit_time is null and vehicle_id = ? ', vehicle_id).exists?
+    Entry.where('exit_time is null and vehicle_id = ?', vehicle_id).exists?
   end
+  def verify_exit
+    Entry.where('exit_time is null and vehicle_id =?', vehicle_id).exists?
+  end
+
   def calculate_minutes
     entry_time.to_time
     Time.now.to_time
@@ -28,6 +34,22 @@ class Entry < ApplicationRecord
   def calcule_minutes_1
     (format_time_exit - format_time_entry).abs/60
   end
+  def minute_charge
+    total = self.rate.value
+    if cout_entry > 5
+      price =  calcule_minutes_1 * total
+      discount = price * 0.20
+      price_with_discount =  price - discount
+      price_with_discount
+    else
+      calcule_minutes_1 * total
+    end
+
+  end
+  def cout_entry
+    Entry.where('vehicle_id = ? ', vehicle_id).count
+  end
+
 
 
 end
