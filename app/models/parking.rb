@@ -3,7 +3,7 @@ class Parking < ApplicationRecord
   has_many :entry
 
 
-  validates :name, :adress, :phone, :quota, presence: true
+  validates :name, :adress, :phone, presence: true
   # def total_vehicles_facture
   #   entry.where("exit_time is null")
   # end

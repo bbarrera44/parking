@@ -40,3 +40,11 @@ staging:
 production:
   <<: *default
 url: <%= ENV['DATABASE_URL'] %>
+
+test:
+  <<: *default
+  encoding: utf8
+  database: parking
+  username: postgres
+  password: 123456
+  host: localhost

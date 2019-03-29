@@ -8,4 +8,5 @@ class Api::ParkingController < ApplicationController
     { root: false }
   end
 end
+
 end

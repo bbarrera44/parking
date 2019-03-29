@@ -2,14 +2,12 @@
     class ParkingsController < ApplicationController
       before_action :set_parking, only: [:show, :edit, :update, :destroy], raise: false
       skip_before_action :authenticate_user!, only: [:create], raise: false
-
       respond_to :json
       def all
       end
       def default_serializer_options
         { root: false }
       end
-
 
       include RenderHelper
       # GET /parkings
@@ -83,7 +81,7 @@
 
       # Never trust parameters from the scary internet, only allow the white list through.
       def parking_params
-        params.permit(:name, :adress, :phone, :quota)
+        params.permit(:name, :adress, :phone)
       end
     end
     end
