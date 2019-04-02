@@ -19,12 +19,12 @@ Rails.application.routes.draw do
   end
   resources :parkings, only: %i[index create update show destroy] do
     collection do
-      get "get_parkings/:name", action: :find_parking_by_name
+      get "find_parking_by_name/:name", action: :find_parking_by_name
     end
   end
   resources :vehicles, only: %i[index create update show destroy] do
     collection do
-      get 'get_panking_by_name_and_color/:plate/:color', action: :find_vehicle_by_plate
+      get 'panking_by_plate_and_color/:plate/:color', action: :find_vehicle_by_plate
     end
   end
 

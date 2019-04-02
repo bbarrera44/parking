@@ -5,9 +5,226 @@
     "version": "v1"
   },
   "paths": {
+    "/api/entries": {
+      "get": {
+        "summary": "Mostrar entradas",
+        "tags": [
+          "Entries"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Entries visualizada"
+          },
+          "404": {
+            "description": "entries not found"
+          }
+        }
+      },
+      "post": {
+        "summary": "Crear una entrada",
+        "tags": [
+          "Entries"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "entry",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "rate_id": {
+                  "type": "integer"
+                },
+                "parking_id": {
+                  "type": "integer"
+                },
+                "vehicle_id": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "entrada creada"
+          }
+        }
+      }
+    },
+    "/api/entries/{id}": {
+      "delete": {
+        "summary": "Remove a entries",
+        "tags": [
+          "Entries"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "entry remove"
+          },
+          "404": {
+            "description": "entry not found"
+          }
+        }
+      },
+      "put": {
+        "summary": "Editar a entry",
+        "tags": [
+          "Entries"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "entries",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "rate_id": {
+                  "type": "integer"
+                },
+                "parking_id": {
+                  "type": "integer"
+                },
+                "vehicle_id": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "rate_id",
+                "parking_id",
+                "vehicle_id"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "entrada editada"
+          }
+        }
+      }
+    },
+    "/api/entries/exit_vehicle/{vehicle}": {
+      "patch": {
+        "summary": "hora de salida",
+        "tags": [
+          "Entries"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "vehicle",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "el carro esta saliendo"
+          },
+          "404": {
+            "description": "exit not found"
+          }
+        }
+      }
+    },
+    "/api/entries/show_ticket/{id}": {
+      "get": {
+        "summary": "Formato de salida",
+        "tags": [
+          "Entries"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "echo "
+          },
+          "404": {
+            "description": "exit not found"
+          }
+        }
+      }
+    },
+    "/api/entries/vehicles_out_side": {
+      "get": {
+        "summary": "vehiculos dentro del parqueadero",
+        "tags": [
+          "Entries"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "esta dentro del parking"
+          },
+          "404": {
+            "description": "exit not found"
+          }
+        }
+      }
+    },
+    "/api/entries/vehicles_inside": {
+      "get": {
+        "summary": "vehiculos fuera del parqueadero",
+        "tags": [
+          "Entries"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "esta fuera del parking"
+          },
+          "404": {
+            "description": "exit not found"
+          }
+        }
+      }
+    },
     "/api/parkings": {
       "post": {
-        "summary": "Creates a parking",
+        "summary": "Crear un parqueadero",
         "tags": [
           "Parkings"
         ],
@@ -16,7 +233,7 @@
         ],
         "parameters": [
           {
-            "name": "parking",
+            "name": "parkings",
             "in": "body",
             "schema": {
               "type": "object",
@@ -24,7 +241,7 @@
                 "name": {
                   "type": "string"
                 },
-                "addres": {
+                "adress": {
                   "type": "string"
                 },
                 "phone": {
@@ -36,7 +253,420 @@
         ],
         "responses": {
           "201": {
-            "description": "pet created"
+            "description": "parking created"
+          }
+        }
+      },
+      "get": {
+        "summary": "Mostrar parqueaderos",
+        "tags": [
+          "Parkings"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "parking created"
+          },
+          "404": {
+            "description": "parking not found"
+          }
+        }
+      }
+    },
+    "/api/parkings/{id}": {
+      "delete": {
+        "summary": "Remove a parking",
+        "tags": [
+          "Parkings"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "parking remove"
+          },
+          "404": {
+            "description": "parking not found"
+          }
+        }
+      },
+      "put": {
+        "summary": "Editar a parking",
+        "tags": [
+          "Parkings"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "parkings",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "adress": {
+                  "type": "string"
+                },
+                "phone": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "name",
+                "adress",
+                "phone"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "parking created"
+          }
+        }
+      }
+    },
+    "/api/parkings/find_parking_by_name/{name}": {
+      "get": {
+        "summary": "Buscar nombre de parking",
+        "tags": [
+          "Parkings"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "name",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "parking remove"
+          },
+          "404": {
+            "description": "parking not found"
+          }
+        }
+      }
+    },
+    "/api/rates": {
+      "post": {
+        "summary": "Crear una tarifa",
+        "tags": [
+          "rates"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "rates",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "integer"
+                },
+                "date_begin": {
+                  "type": "date"
+                },
+                "date_end": {
+                  "type": "date"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "rate created"
+          }
+        }
+      },
+      "get": {
+        "summary": "Mostrar rates",
+        "tags": [
+          "rates"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "parking created"
+          },
+          "404": {
+            "description": "parking not found"
+          }
+        }
+      }
+    },
+    "/api/rates/{id}": {
+      "delete": {
+        "summary": "Remove a rate",
+        "tags": [
+          "rates"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "rate remove"
+          },
+          "404": {
+            "description": "rate not found"
+          }
+        }
+      },
+      "put": {
+        "summary": "Editar una entrada",
+        "tags": [
+          "rates"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "rates",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "name": {
+                  "type": "string"
+                },
+                "value": {
+                  "type": "integer"
+                },
+                "date_begin": {
+                  "type": "date"
+                },
+                "date_end": {
+                  "type": "date"
+                }
+              },
+              "required": [
+                "name",
+                "velue",
+                "date_begin",
+                "date_end"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "rates editada"
+          }
+        }
+      }
+    },
+    "/api/vehicles": {
+      "post": {
+        "summary": "Crear un vehiculo",
+        "tags": [
+          "vehicles"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "rates",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "plate": {
+                  "type": "string"
+                },
+                "color": {
+                  "type": "string"
+                },
+                "brand": {
+                  "type": "string"
+                },
+                "parking_id": {
+                  "type": "integer"
+                }
+              }
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "vehicle created"
+          }
+        }
+      },
+      "get": {
+        "summary": "Mostrar vehicles",
+        "tags": [
+          "vehicles"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "vehicles created"
+          },
+          "404": {
+            "description": "vehicles not found"
+          }
+        }
+      }
+    },
+    "/api/vehicles/{id}": {
+      "delete": {
+        "summary": "Remove a vehicles",
+        "tags": [
+          "vehicles"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "vehicles remove"
+          },
+          "404": {
+            "description": "vehicles not found"
+          }
+        }
+      },
+      "put": {
+        "summary": "Editar un vehicle",
+        "tags": [
+          "vehicles"
+        ],
+        "consumes": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "vehicles",
+            "in": "body",
+            "schema": {
+              "type": "object",
+              "properties": {
+                "plate": {
+                  "type": "string"
+                },
+                "color": {
+                  "type": "string"
+                },
+                "brand": {
+                  "type": "string"
+                },
+                "parking_id": {
+                  "type": "integer"
+                }
+              },
+              "required": [
+                "plate",
+                "color",
+                "brand",
+                "parking_id"
+              ]
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "vehicle editado"
+          }
+        }
+      }
+    },
+    "/api/vehicles/panking_by_plate_and_color/{plate}/{color}": {
+      "get": {
+        "summary": "Buscar plate, color de vehicles",
+        "tags": [
+          "vehicles"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "name": "plate",
+            "in": "path",
+            "type": "string",
+            "required": true
+          },
+          {
+            "name": "color",
+            "in": "path",
+            "type": "string",
+            "required": true
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "parametros encontrados"
+          },
+          "404": {
+            "description": "no se encontraron los parametros"
           }
         }
       }

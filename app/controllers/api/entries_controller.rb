@@ -111,7 +111,7 @@ module Api
                   only: %i[name],
               },
               vehicle:{
-                  only: %i[plate color]
+                  only: %i[plate color brand parking_id]
 
       }
           }

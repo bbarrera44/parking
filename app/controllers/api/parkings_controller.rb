@@ -54,7 +54,7 @@
       # PATCH/PUT /parkings/1
       # PATCH/PUT /parkings/1.json
       def update
-        if @parking.update(@parking_params)
+        if @parking.update(parking_params)
           render_success_format("correctly edited parking", @parking)
         end
       rescue StandardError => e
@@ -70,7 +70,7 @@
       end
       def find_parking_by_name
         @parking = Parking.find_by_name(params[:name])
-        render_success_format "esta es su data",  @parking
+        render_success_format "buscar por nombre del parqueadero",  @parking
       end
 
       private

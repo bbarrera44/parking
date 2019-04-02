@@ -50,6 +50,4 @@ class Entry < ApplicationRecord
     Entry.where('vehicle_id = ? ', vehicle_id).count
   end
 
-
-
 end
