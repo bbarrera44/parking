@@ -41,7 +41,7 @@ class Entry < ApplicationRecord
       discount = price * 0.20
       price_with_discount =  price - discount
       price_with_discount
-    else
+    else plate
       calcule_minutes_1 * total
     end
 

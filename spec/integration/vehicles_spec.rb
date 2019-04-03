@@ -11,8 +11,6 @@ describe 'vehicle API' do
           type: :object,
           properties: {
               plate: { type: :string },
-              color: { type: :string },
-              brand: { type: :string},
               parking_id: { type: :integer}
           },
       }
@@ -65,11 +63,9 @@ describe 'vehicle API' do
           type: :object,
           properties: {
               plate: { type: :string },
-              color: { type: :string },
-              brand: { type: :string},
               parking_id: { type: :integer}
           },
-          required: ['plate', 'color', 'brand', 'parking_id']
+          required: ['plate','parking_id']
       }
       response '201', 'vehicle editado' do
         run_test!
@@ -78,13 +74,12 @@ describe 'vehicle API' do
   end
 
 
-  path '/api/vehicles/panking_by_plate_and_color/{plate}/{color}' do
+  path '/api/vehicles/panking_by_plate/{plate}' do
 
-    get 'Buscar plate, color de vehicles' do
+    get 'Buscar vehiculos por la placa' do
       tags 'vehicles'
       produces 'application/json'
       parameter name: :plate, :in => :path, :type => :string
-      parameter name: :color, :in => :path, :type => :string
 
       response '200', 'parametros encontrados' do
         run_test!

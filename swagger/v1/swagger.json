@@ -525,12 +525,6 @@
                 "plate": {
                   "type": "string"
                 },
-                "color": {
-                  "type": "string"
-                },
-                "brand": {
-                  "type": "string"
-                },
                 "parking_id": {
                   "type": "integer"
                 }
@@ -612,20 +606,12 @@
                 "plate": {
                   "type": "string"
                 },
-                "color": {
-                  "type": "string"
-                },
-                "brand": {
-                  "type": "string"
-                },
                 "parking_id": {
                   "type": "integer"
                 }
               },
               "required": [
                 "plate",
-                "color",
-                "brand",
                 "parking_id"
               ]
             }
@@ -638,9 +624,9 @@
         }
       }
     },
-    "/api/vehicles/panking_by_plate_and_color/{plate}/{color}": {
+    "/api/vehicles/panking_by_plate/{plate}": {
       "get": {
-        "summary": "Buscar plate, color de vehicles",
+        "summary": "Buscar vehiculos por la placa",
         "tags": [
           "vehicles"
         ],
@@ -650,12 +636,6 @@
         "parameters": [
           {
             "name": "plate",
-            "in": "path",
-            "type": "string",
-            "required": true
-          },
-          {
-            "name": "color",
             "in": "path",
             "type": "string",
             "required": true

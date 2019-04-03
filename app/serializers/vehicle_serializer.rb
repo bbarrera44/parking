@@ -1,3 +1,3 @@
 class VehicleSerializer < ActiveModel::Serializer
-  attributes :id, :plate, :color, :brand, :parking_id
+  attributes :id, :plate, :parking_id
 end

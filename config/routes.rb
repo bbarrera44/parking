@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   end
   resources :vehicles, only: %i[index create update show destroy] do
     collection do
-      get 'panking_by_plate_and_color/:plate/:color', action: :find_vehicle_by_plate
+      get 'find_vehicle_by_plate/:plate', action: :find_vehicle_by_plate
     end
   end
 

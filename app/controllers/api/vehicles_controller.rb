@@ -65,9 +65,10 @@ class VehiclesController < ApplicationController
     raise e
   end
   def find_vehicle_by_plate
-    @vehicles = Vehicle.where(:plate => params[:plate],:color => params[:color])#buscar por plate color
+    @vehicles = Vehicle.where(:plate => params[:plate])#buscar por plate color
     render_success_format("estos son los vehiculos", @vehicles)
   end
+
   # DELETE /vehicles/1
   # DELETE /vehicles/1.json
   def destroy
@@ -83,7 +84,7 @@ class VehiclesController < ApplicationController
 
   # Never trust parameters from the scary internet, only allow the white list through.
   def vehicle_params
-    params.permit(:plate, :color, :brand, :parking_id)
+    params.permit(:plate, :parking_id)
   end
 end
 end

@@ -23,11 +23,13 @@ default: &default
 
 development:
   <<: *default
-  encoding: utf8
-  database: parking
-  username: postgres
-  password: 123456
-  host: localhost
+#  encoding: utf8
+#  database: parking
+#  username: postgres
+#  password: 123456
+#  host: localhost
+  url: "postgres: // vuhjfmqbeqqhqu : c3857a7f9885e6b888439f3f7053ed9f0cd56ad462c994c9221353db129340bd @ ec2-23-21-136-232.compute-1.amazonaws.com : 5432 / d9f7pccz"
+
 
 prestaging:
   <<: *default
@@ -41,3 +43,10 @@ production:
   <<: *default
 url: <%= ENV['DATABASE_URL'] %>
 
+test:
+  <<: *default
+  encoding: utf8
+  database: parking
+  username: postgres
+  password: 123456
+  host: localhost
