@@ -23,20 +23,18 @@ default: &default
 
 development:
   <<: *default
-  encoding: utf8
-  database: parking
-  username: postgres
-  password: 123456
-  host: localhost
+  url: "postgres://imvpuschrfgyda:992b800ffcc13b86cf40b5d7b41f664469e8e826a45b584b2778df83f1121fd5@ec2-23-21-129-125.compute-1.amazonaws.com:5432/dep16nft8v00f"
+
 
 prestaging:
   <<: *default
-  url: <%= ENV['DATABASE_URL'] %>
+  url: "postgres://imvpuschrfgyda:992b800ffcc13b86cf40b5d7b41f664469e8e826a45b584b2778df83f1121fd5@ec2-23-21-129-125.compute-1.amazonaws.com:5432/dep16nft8v00f"
 
 staging:
   <<: *default
-  url: <%= ENV['DATABASE_URL'] %>
+  url: "postgres://imvpuschrfgyda:992b800ffcc13b86cf40b5d7b41f664469e8e826a45b584b2778df83f1121fd5@ec2-23-21-129-125.compute-1.amazonaws.com:5432/dep16nft8v00f"
 
 production:
   <<: *default
-url: <%= ENV['DATABASE_URL'] %>
+  url: "postgres://imvpuschrfgyda:992b800ffcc13b86cf40b5d7b41f664469e8e826a45b584b2778df83f1121fd5@ec2-23-21-129-125.compute-1.amazonaws.com:5432/dep16nft8v00f"
+
