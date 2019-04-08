@@ -31,10 +31,6 @@ development:
 
 production:
   <<: *default
-  encoding: utf8
-  database: parking
-  username: postgres
-  password: 123456
-  host: localhost
+  url: 'postgres://osuculppyyxnhz:706cd40fc587674e312b3727f55b90b0fc11df570a2215bef7482a7952a0b04a@ec2-75-101-133-29.compute-1.amazonaws.com:5432/d5qqvafnikt811'
 
 
