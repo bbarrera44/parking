@@ -29,4 +29,12 @@ development:
   password: 123456
   host: localhost
 
+production:
+  <<: *default
+  encoding: utf8
+  database: parking
+  username: postgres
+  password: 123456
+  host: localhost
+
 
