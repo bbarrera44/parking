@@ -10,7 +10,7 @@ gem 'time_diff', '~> 0.3.0'
 gem 'time_difference'
 ################################
 # Use postgresql as the database for Active Record
-#gem 'pg', '>= 0.18', '< 2.0'
+gem 'pg', '>= 0.18', '< 2.0'
 # Use Puma as the app server
 gem 'puma', '~> 3.11'
 # Use SCSS for stylesheets
